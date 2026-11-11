@@ -1,105 +1,118 @@
-# Om Sri Laxmi Traders — UI Design Guide
+# Om Sri Laxmi Traders — Interface Design
 
-This file describes the current visual language and layout of the Store Desk app. Use it as the reference when changing the interface. Product and billing behavior lives mainly in `src/app.js`; visual rules live in `styles.css`.
+This guide describes the current visual system for the Store Desk. UI markup and interactions live in `src/app.js`; styling lives in `styles.css`.
 
 ## Design direction
 
-- **Feel:** warm, calm, clear, and businesslike; avoid a generic blue dashboard look.
-- **Surface:** soft ivory page background, white content panels, fine warm-gray borders, modest shadows, rounded corners.
-- **Accent:** terracotta for primary actions and active navigation. Green communicates successful or healthy states; red is reserved for errors and destructive actions.
-- **Density:** compact enough for a working shop counter, with readable labels and larger headings. Avoid oversized decoration and unnecessary cards around individual values.
-- **Typography:** DM Sans for interface copy and controls; Manrope for headings and prominent figures.
-- **Icons:** simple outline icons, consistent stroke weight, used with text labels.
+- **Character:** contemporary merchant workspace: confident, precise, calm, and practical at a busy counter.
+- **Color language:** deep ink-blue navigation, cool white and mist-gray surfaces, and a focused teal accent. Avoid terracotta, beige, and decorative gradients as the primary brand language.
+- **Hierarchy:** strong page titles, short supporting copy, readable financial figures, and compact metadata. Keep a page focused on its task.
+- **Typography:** DM Sans for interface copy and controls; Manrope for headings and prominent figures. Use tabular numerals for quantities and money.
+- **Icons:** consistent outline icons with labels for navigation and actions.
 
-## Design tokens
+## Color tokens
 
-The main tokens are declared on `:root` in `styles.css`.
-
-| Token | Current value | Use |
+| Token | Value | Use |
 | --- | --- | --- |
-| `--ink` | `#292821` | Main text |
-| `--muted` | `#85837a` | Supporting text |
-| `--line` | `#eeece6` | Borders and separators |
-| `--paper` | `#fff` | Panels and dialogs |
-| `--accent` | `#bd5e37` | Main buttons and highlights |
-| `--accent-dark` | `#a84e2b` | Hover state for main buttons |
-| `--cream` | `#f4f0e8` | Secondary warm surfaces |
-| `--green` | `#327553` | Positive status |
-| `--red` | `#b14437` | Error or destructive status |
-| `--blue` | `#426999` | Informational status |
-| `--violet` | `#745b92` | Secondary statistic tone |
+| `--navy` | `#142b3a` | Main sidebar and navigation shell |
+| `--ink` | `#172733` | Primary text |
+| `--muted` | `#687985` | Supporting text |
+| `--canvas` | `#f3f6f7` | Page background |
+| `--paper` | `#ffffff` | Cards, dialogs, tables |
+| `--line` | `#dfe7eb` | Borders and separators |
+| `--accent` | `#087f78` | Primary actions and selected states |
+| `--accent-dark` | `#06645f` | Hover and pressed states |
+| `--green` | `#21805d` | Successful or healthy status |
+| `--red` | `#b74648` | Errors, mismatches, destructive actions |
+| `--blue` | `#426b91` | Informational status |
+| `--violet` | `#6e6595` | Secondary analytics |
 
-Keep status colors consistent: green means okay, red means action is needed, and terracotta marks a primary action.
+Use color with consistent meaning. Teal marks the main action and active location; green indicates success; amber indicates a caution; red indicates an error or mismatch.
 
 ## App shell and navigation
 
-- **Desktop:** fixed left sidebar, top header, centered page content, and a small footer. The sidebar includes Overview, New bill, Invoices, Purchase bills, Inventory, Customers, Transactions, and Settings.
-- **Tablet:** sidebar narrows before switching to the compact navigation layout.
-- **Mobile:** navigation sits along the bottom in a two-row, four-column grid. The main content reserves space above it and accounts for device safe areas.
-- **Header:** store identity, current page, date, connection status, and a New bill shortcut.
-- **Content width:** capped to keep tables and forms from stretching too far on wide screens.
+- **Desktop:** fixed ink-blue sidebar, white header, centered content area, and quiet footer. Keep all eight workspace destinations visible in the sidebar.
+- **Mobile:** use a five-item bottom bar for Overview, Bills, Invoices, Stock, and Parties. The store mark button opens a full-height sidebar drawer with all destinations, database status, and sign-out.
+- **Header:** the store mark toggles the side navigation; the header identifies the store and shows the date without repeating the page name.
+- **Footer:** use only “Built for Om Sri Laxmi Traders”.
+- **Content:** use a responsive maximum width. Do not let the page itself scroll horizontally; dense data tables may scroll within their own container.
 
-## Page layouts
+## Page patterns
 
 ### Overview
 
-Four compact summary cards sit above a recent-activity table and a stock-watch panel. Empty states should explain what action will create the first records and provide a direct action button.
+Show four summary measures followed by fast paths for starting a wholesale bill, reviewing a vendor PDF, and checking inventory. Recent transactions and stock watch sit below. Keep figures prominent and supporting labels quiet. Empty states should explain what will appear and provide the next useful action.
 
 ### New bill
 
-- Search for a registered customer, then enter the customer’s MRP discount.
-- Product search is enabled after the customer and discount are entered.
-- Search results show purchase date at lower left and stock at lower right.
-- Selecting a product opens a quantity dialog. The dialog shows on-hand stock, bill discount, dealer discount, purchase date, quantity, and the item’s MRP discount.
-- The invoice table columns are Item, MRP, Quantity, Price, 5% GST, Price (Incl. Tax), and Total. Quantity is plain text that opens the quantity dialog when tapped.
-- The bill supports an optional plus discount for early payment, payment received now, and a checkbox for printing discount percentages.
-- Keep totals easy to scan. The payment field is required before completing a bill.
-
-### Invoices and customer ledger
-
-- Invoices have a dedicated sidebar page with search and an edit action.
-- A customer’s invoice count opens their invoice list and edit actions.
-- Invoice editing shows quantities, per-item MRP discounts, dealer discount references, payment, and early-payment terms.
-- Saved changes update inventory and the customer balance together.
+The wholesale flow searches registered customers, captures the customer’s MRP discount, searches inventory products, and asks for quantity in a dialog. Preserve purchase-date and stock context in product results and the quantity dialog. Keep invoice columns in the requested order and the tax, total, payment, and early-payment savings clear. Never use quantity steppers.
 
 ### Purchase bills
 
-The upload and extraction area is separate from the extracted invoice review. The review uses a wide, horizontally scrollable table because it represents vendor invoice lines and checks. Summary fields stack in rows; mismatches use a soft red treatment and matching values use a soft green treatment.
+Keep PDF selection and extraction steps clear, show extraction progress in context, and present the extracted bill as an editable review. Display validation status on the affected row and summary. Mismatches use a light red surface; successful checks use a light green surface. A confirmation dialog explains any mismatch before proceeding.
+
+### Invoices and ledgers
+
+Invoices remain available from their dedicated list and customer ledgers. Editing an invoice must continue to update the invoice, inventory, and customer balance together.
 
 ### Inventory and customers
 
-Inventory is a data table with description, stock, MRP, rate, rate below MRP, cost price, dealer discount, and stock adjustment. Do not reintroduce SKU. Customer search and account balance remain visible, with invoice access in the bills column.
+Use readable, compact tables with tabular money and quantities. Preserve the required product details and searchable customer balances. Avoid adding decorative columns that obscure the operational fields.
 
-## Components and interaction rules
+### Settings
 
-- **Primary button:** terracotta fill, white label, medium weight, modest radius. Use for the page’s main action.
-- **Secondary button:** warm-gray fill and thin border. Use for cancel, back, and less frequent actions.
-- **Panels:** white background, thin warm border, about 11–13px corner radius. Panel headings align left and use a subtle divider.
-- **Tables:** small uppercase headers, clear row separators, tabular number alignment for currency, and horizontal scrolling only when the data genuinely needs more width.
-- **Dialogs:** fit within the viewport, use a clear title and supporting details, and keep actions visible. Avoid horizontal overflow. On phones, stack action buttons and keep dialogs within the device height.
-- **Forms:** labels above inputs, clear focus rings, numeric keyboard hints for prices and quantities, and no increment/decrement steppers.
-- **Search suggestions:** white floating surface with a light border and shadow. Keep the product/customer name prominent and supporting information smaller.
-- **Toasts:** concise status messages; use red for errors and a neutral/green treatment for success.
-- **Empty states:** state what is empty and how the user can add the first record.
+Separate connection preferences, store preferences, and saved AI model profiles into clearly titled sections. Mask credentials and make the active model easy to recognize.
+
+## Components
+
+- **Primary button:** teal fill, white label, medium radius, clear hover and keyboard-focus states.
+- **Secondary button:** white or pale blue-gray with a fine border.
+- **Panels:** white surface, cool hairline border, restrained shadow, and 12–16px radius.
+- **Forms:** labels above controls, 42px minimum control height, visible teal focus ring, and no number-input steppers.
+- **Dialogs:** fit the viewport with safe margins; keep primary actions visible; stack actions on narrow screens.
+- **Status:** use both text/icon and color so state does not rely on color alone.
+- **Toasts:** concise messages with neutral, success, or error backgrounds.
 
 ## Responsive behavior
 
-The stylesheet uses breakpoints around `1000px`, `780px`, and `560px`.
+- Around `1100px`, reduce page gutters and card spacing.
+- At `780px`, switch to the bottom navigation and drawer, stack primary work areas, and keep search and page headings from overflowing.
+- At `560px`, use one-column forms, compact metric cards, and dialogs sized to the viewport.
+- Dense invoice tables may scroll inside their own wrapper. Mobile table cards should retain clear field labels.
+- Respect safe-area insets on mobile devices.
 
-- At about `1000px`, reduce sidebar and page gutters and collapse dashboard columns.
-- At about `780px`, switch navigation to the bottom bar and stack the primary content layouts.
-- At about `560px`, use single-column forms and smaller page gutters. Keep important controls full width where practical.
-- Tables with many business columns may scroll horizontally inside their own container; the page itself should not gain horizontal overflow.
-- Dialogs should use viewport-relative width and height, include safe outer margins, and avoid controls being pushed off screen.
+## Print invoices
 
-## Invoice print design
+Wholesale invoices print on A5 portrait paper with compact typography, narrow margins, legible totals, and optional discount percentage. Keep early-payment due date and savings terms easy to find.
 
-Invoice printing uses an A5 portrait page. Keep the type compact and legible, use narrow margins, and avoid large decorative headings. The printed discount column appears only when the user checks the print-discount option. If plus discount is enabled, show the due date and the extra savings amount clearly as a short payment term.
+## Implementation notes
 
-## Where to change the UI
+- Adjust colors, spacing, typography, and responsive components in `styles.css`.
+- Adjust page structure and interactions in `src/app.js`.
+- Update this document whenever the visual language changes.
+- Keep business calculations, Supabase persistence, validation, stock updates, and customer-ledger behavior intact during UI work.
 
-- `styles.css`: colors, type, spacing, panels, tables, dialogs, navigation, and responsive layouts.
-- `src/app.js`: page markup, sidebar labels, form fields, dialogs, invoice print markup, and interaction behavior.
-- `index.html`: document title, font loading, and stylesheet/script entry points.
 
-When making a visual change, preserve keyboard focus visibility, readable contrast, touch-friendly controls, the no-stepper rule, and stock/payment validation. Keep data changes and visual-only changes distinct so the billing calculations stay consistent with the Supabase functions.
+## Settings, expenses and reporting
+
+Settings is a card index that opens separate detail pages for AI models, existing stock entry, and the store connection. Currency and tax controls are omitted. Existing stock entry collects article number, colour, size, MRP, quantity, and unit; Rate is 60% of MRP, Rate below MRP is 40%, cost price is Rate × 95% × 105%, and dealer discount is calculated as (MRP − cost price) ÷ MRP × 100. Per-unit GST is calculated as Rate × 95% × 5% and stored on the product. Expenses are filtered by month and year, with the selected month total shown above the expense list. Data & Graphs compares monthly expenses, wholesale sales, and retail sales over the latest 12 months.
+
+
+## Dialog standard
+
+All dialogs use the native `<dialog class="modal ...">` shell with `.modal-card` content. Shared sizing caps dialog width at 560px and constrains height to the viewport; content may scroll vertically inside the dialog when the screen is short. Inputs and actions stay within the card, two-column fields collapse on narrow screens, and action buttons wrap without causing horizontal overflow. New dialogs must use this shared class pattern rather than bespoke viewport sizing.
+
+
+## Minimal panel headings
+
+Application boxes omit advisory copy and empty-state instructions while retaining headings, labels, formulas, status, and actual record data. Quick action and Settings shortcut cards keep only their names and actions. Keep essential counts and status in dedicated controls or content rather than adding helper copy under every panel title.
+
+
+## Responsive tables
+
+Tables preserve their row and column structure at phone widths and scroll horizontally inside their wrapper, with a visible bottom scrollbar and touch swiping. Set concise per-table column widths for billing, inventory, and purchase review; right-align numeric values and avoid large fixed widths where content permits.
+
+
+## Wholesale billing customer and payment terms
+
+The bill builder places registered customer search and customer GSTIN, address, and contact details above the invoice card. The early-payment checkbox follows the invoice discount-print checkbox and opens a dialog to collect extra discount and allowed payment days. The savings notice spans the bill above Complete bill and is mirrored on the printed A5 invoice.
