@@ -134,7 +134,11 @@ from (
 delete from public.products where stock_quantity=0;
 create table if not exists public.store_settings (
   id uuid primary key default gen_random_uuid(), owner_id uuid not null default auth.uid() references auth.users(id) on delete cascade,
-  currency text not null default 'INR', tax_rate numeric(6,3) not null default 0 check(tax_rate >= 0 and tax_rate <= 100), unique(owner_id)
+  currency text not null default 'INR', tax_rate numeric(6,3) not null default 0 check(tax_rate >= 0 and tax_rate <= 100),
+  invoice_note_language text not null default 'en' check(invoice_note_language in ('en','te')),
+  invoice_bank_name text not null default 'Union Bank of India (Mancherial Branch)',
+  invoice_bank_account text not null default '03631 40100 00004',
+  invoice_bank_ifsc text not null default 'UBIN0803634', unique(owner_id)
 );
 create table if not exists public.ai_model_profiles (
   id uuid primary key default gen_random_uuid(), owner_id uuid not null default auth.uid() references auth.users(id) on delete cascade,

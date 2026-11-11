@@ -836,3 +836,178 @@ html[lang=te] body{font-family:'Noto Sans Telugu','Nirmala UI','DM Sans',sans-se
 /* Monthly gross/net profit and separate sales ledgers in Data & Graphs */
 .graph-finance-table{margin-top:14px;overflow:hidden}.graph-finance-table .panel-head{gap:10px;flex-wrap:wrap}.graph-finance-table .panel-head>strong{font-size:12px;color:var(--muted);font-weight:600}.graph-finance-table table{min-width:880px}.graph-finance-table:nth-of-type(2) table{min-width:690px}.graph-finance-table th{white-space:nowrap}.graph-finance-table td{font-variant-numeric:tabular-nums;white-space:nowrap}.graph-finance-table .profit-total,.graph-finance-table .sales-total{font-weight:800;color:var(--ink)}.graph-finance-table .expense-value{color:#a44e36}.graph-finance-table .net-value,.graph-finance-table .savings-value{font-weight:800;color:#087f78}
 .graph-profit-gross table{min-width:650px}.graph-profit-net table{min-width:1120px}.graph-sales-table table{min-width:700px}
+
+/* App-wide colour themes */
+:root{--theme-soft:#e8f5f2}
+:root[data-theme="teal"]{--theme-soft:#e8f5f2}
+:root[data-theme="saffron"]{--theme-soft:#fff1e6}
+:root[data-theme="ocean"]{--theme-soft:#e9f4fb}
+:root[data-theme="plum"]{--theme-soft:#f3ecf8}
+:root[data-theme="rose"]{--theme-soft:#faedf1}
+:root[data-theme="forest"]{--theme-soft:#edf5ed}
+:root[data-theme="slate"]{--theme-soft:#edf1f5}
+.nav-item.active,.mobile-nav-item.active{color:var(--accent)}
+.nav-item.active{box-shadow:inset 3px 0 var(--accent),0 2px 7px #312a190d}
+.mobile-nav-item.active{background:var(--theme-soft)}
+.brand-mark,.brand-mark.small,.header-mark{background:var(--accent)}
+.stat-icon,.settings-link-icon{color:var(--accent)}
+.theme-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:14px}
+.theme-choice{position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:12px;min-height:132px;padding:16px;border:1px solid var(--line);border-radius:14px;background:var(--paper);color:var(--ink);text-align:left;font-weight:700}
+.theme-choice.selected{border:2px solid var(--accent);box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 12%,transparent)}
+.theme-swatch{width:100%;height:54px;border-radius:9px;background:var(--swatch-soft);display:flex;align-items:flex-end;gap:5px;padding:8px}
+.theme-swatch i{display:block;width:26px;height:24px;border-radius:6px;background:var(--swatch)}.theme-swatch i:nth-child(2){opacity:.7;height:18px}.theme-swatch i:nth-child(3){opacity:.4;height:13px}
+.theme-selected-mark{position:absolute;right:14px;bottom:14px;color:var(--accent)}
+.invoice-settings-form{padding:22px;display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;overflow:visible}
+.invoice-settings-form label{display:grid;gap:8px;font-size:12px;font-weight:700;color:var(--ink)}
+.invoice-settings-form input,.invoice-settings-form select{width:100%;min-width:0}
+.invoice-settings-form .model-form-actions{grid-column:1/-1;margin:0}
+@media(max-width:600px){.invoice-settings-form{grid-template-columns:1fr;padding:16px}.invoice-settings-form .model-form-actions{grid-column:auto}.theme-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+.customer-balance-summary{margin-top:10px;padding:9px 11px;border-radius:9px;background:var(--theme-soft);font-size:10px;color:var(--muted)}
+.customer-balance-summary>div{display:flex;justify-content:space-between;gap:12px;padding:3px 0}.customer-balance-summary b{color:var(--ink);white-space:nowrap}.customer-balance-summary .balance-preview-total{border-top:1px solid color-mix(in srgb,var(--accent) 25%,transparent);margin-top:4px;padding-top:7px;font-weight:700;color:var(--accent)}
+
+/* Theme tokens now carry the full interface palette, not only the primary button. */
+:root{--theme-canvas:#f1f7f6;--theme-sidebar:#e8f2f0;--theme-line:#d8e8e5}
+body,.shell,.main,.content{background:var(--theme-canvas)!important}
+.sidebar{background:var(--theme-sidebar)!important;border-color:var(--theme-line)!important}
+.topbar,.mobile-nav,.panel,.stat,.settings-link-card,.settings-panel,.language-option,.theme-choice{background-color:var(--paper)!important;border-color:var(--theme-line)!important}
+.main footer{border-color:var(--theme-line)!important}
+.primary,.brand-mark,.header-mark,.stat-icon,.settings-link-icon,.nav-item.active,.mobile-nav-item.active{--icon-accent:var(--accent);color:var(--accent)}
+.primary{background:var(--accent)!important;color:#fff!important}
+.primary:hover{background:var(--accent-dark)!important}
+.brand-mark,.header-mark{background:var(--accent)!important;color:#fff!important}
+.nav-item.active{background:var(--theme-soft)!important;box-shadow:inset 3px 0 var(--accent)!important}
+.mobile-nav-item.active{background:var(--theme-soft)!important;color:var(--accent)!important}
+.eyebrow,.text-button,.settings-card-arrow,.active-label,.settings-link-icon,.nav-item.active .nav-icon,.mobile-nav-item.active .nav-icon{color:var(--accent)!important}
+.stat-icon,.settings-link-icon{background:var(--theme-soft)!important}
+.nav-icon svg,.settings-link-icon svg,.stat-icon svg{color:currentColor;stroke:currentColor}
+input,select,textarea,.search,.product-picker-wrap input{border-color:var(--theme-line)}
+input:focus,select:focus,textarea:focus,.search:focus{border-color:var(--accent)!important;box-shadow:0 0 0 3px color-mix(in srgb,var(--accent) 15%,transparent)!important}
+thead th{background:color-mix(in srgb,var(--theme-soft) 58%,white)!important}
+.invoice-settings-form,.customer-balance-summary{border-color:var(--theme-line)}
+.invoice-title{line-height:1.55}.customer-meta{display:block!important;padding:9px 0!important}.bill-to-label{display:block;margin-bottom:3px}.bill-to-lines{line-height:1.5}.bill-to-lines>div{display:block}
+@media(max-width:780px){.mobile-nav{background:color-mix(in srgb,var(--paper) 95%,var(--theme-soft))!important;border-color:var(--theme-line)!important}}
+.login-page{background:var(--theme-canvas)!important}.login-card{background:var(--paper)!important;border-color:var(--theme-line)!important}.login-card .google-button{border-color:var(--theme-line)}
+
+/* Theme-consistent navigation palette and higher contrast for every sidebar state. */
+.sidebar{background:var(--theme-sidebar)!important;border-right:1px solid var(--theme-line)!important;color:var(--ink)!important}
+.sidebar .brand b,.sidebar .brand>div b{color:var(--ink)!important}
+.sidebar .brand small,.sidebar .side-label{color:var(--muted)!important}
+.sidebar .brand-mark{background:var(--accent)!important;color:#fff!important}
+.sidebar .nav-item{color:var(--muted)!important;background:transparent!important}
+.sidebar .nav-item:hover{background:color-mix(in srgb,var(--accent) 9%,var(--theme-sidebar))!important;color:var(--ink)!important}
+.sidebar .nav-item.active{color:var(--accent)!important;background:var(--theme-soft)!important;box-shadow:inset 3px 0 var(--accent)!important}
+.sidebar .nav-icon,.sidebar .nav-icon svg{color:inherit!important;stroke:currentColor}
+.sidebar .nav-item.active .nav-icon{color:var(--accent)!important}
+.sidebar .sync,.sidebar .owner{border-color:var(--theme-line)!important;color:var(--muted)!important}
+.sidebar .owner b{color:var(--ink)!important}.sidebar .owner small{color:var(--muted)!important}
+.sidebar .avatar{background:var(--theme-soft)!important;color:var(--accent)!important}
+.sidebar .nav-item kbd{border-color:var(--theme-line)!important;color:var(--muted)!important;background:color-mix(in srgb,var(--paper) 65%,transparent)}
+.sidebar-backdrop{background:color-mix(in srgb,var(--ink) 58%,transparent)!important}
+
+/* App-wide page titles follow the Expenses heading treatment. */
+.page-heading h1,.welcome h1{font:800 clamp(29px,6.6vw,34px)/1.15 Manrope,'DM Sans',sans-serif!important;color:#152a36!important;letter-spacing:-.045em!important}
+.page-heading,.welcome{margin-bottom:18px}
+.page-heading>.eyebrow,.page-heading>div>.eyebrow,.welcome>.eyebrow,.welcome>div>.eyebrow{display:none!important}
+.topbar-brand b{text-transform:uppercase!important;color:var(--accent)!important;letter-spacing:.015em!important}
+.main footer{font-size:10px;color:var(--muted)}
+
+/* Compact daily performance dashboard. */
+.dashboard-welcome{align-items:center}
+.daily-dashboard{margin:0 0 13px;padding:14px;border:1px solid var(--theme-line);border-radius:14px;background:linear-gradient(135deg,var(--paper),color-mix(in srgb,var(--theme-soft) 70%,var(--paper)));box-shadow:0 4px 16px color-mix(in srgb,var(--ink) 4%,transparent)}
+.daily-dashboard-head{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-bottom:10px}
+.daily-dashboard-head>div{display:grid;gap:4px}
+.daily-dashboard-head .eyebrow{margin:0;color:var(--accent);font-size:9px;letter-spacing:.13em}
+.daily-dashboard-head strong{font:800 20px/1.15 Manrope,'DM Sans',sans-serif;color:var(--ink);letter-spacing:-.03em}
+.daily-dashboard-head strong small{font:600 11px 'DM Sans',sans-serif;color:var(--muted);letter-spacing:0}
+.daily-bill-count{padding:5px 9px;border-radius:999px;background:var(--theme-soft);color:var(--accent);font-size:10px;font-weight:700;white-space:nowrap}
+.daily-total-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px;margin-bottom:9px}
+.daily-total-grid article{display:grid;gap:4px;min-width:0;padding:9px 10px;border:1px solid var(--theme-line);border-radius:10px;background:var(--paper)}
+.daily-total-grid small,.daily-category-values small,.dashboard-pulse small{color:var(--muted);font-size:9px;font-weight:700;line-height:1.25}
+.daily-total-grid b{color:var(--ink);font-size:14px;font-weight:800;font-variant-numeric:tabular-nums;white-space:nowrap}
+.daily-total-grid .daily-net{background:var(--theme-soft);border-color:color-mix(in srgb,var(--accent) 25%,var(--theme-line))}
+.daily-total-grid .daily-net b{color:var(--accent)}
+.daily-category-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}
+.daily-category-card{min-width:0;padding:9px 10px;border:1px solid var(--theme-line);border-radius:10px;background:color-mix(in srgb,var(--paper) 90%,var(--theme-soft))}
+.daily-category-title{display:flex;align-items:center;gap:6px;min-width:0;margin-bottom:8px}
+.daily-category-title>b{min-width:0;overflow:hidden;color:var(--ink);font-size:10px;line-height:1.2;text-overflow:ellipsis}
+.daily-category-title>small{margin-left:auto;color:var(--muted);font-size:8px;white-space:nowrap}
+.daily-category-dot{flex:none;width:7px;height:7px;border-radius:50%;background:var(--accent)}
+.daily-walkmate .daily-category-dot{background:#548a70}.daily-general .daily-category-dot{background:#8c75aa}
+.daily-category-values{display:grid;grid-template-columns:1fr 1fr;gap:5px}
+.daily-category-values>span{display:grid;gap:3px;min-width:0}.daily-category-values b{overflow:hidden;color:var(--ink);font-size:11px;font-weight:800;text-overflow:ellipsis;white-space:nowrap;font-variant-numeric:tabular-nums}
+.dashboard-pulse{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-bottom:13px}
+.dashboard-pulse article{display:flex;align-items:center;gap:8px;min-width:0;padding:9px 10px;border:1px solid var(--theme-line);border-radius:11px;background:var(--paper)}
+.pulse-icon{display:grid;place-items:center;flex:none;width:28px;height:28px;border-radius:9px;background:var(--theme-soft);color:var(--accent)}.pulse-icon svg{width:16px;height:16px}
+.dashboard-pulse article>span:last-child{display:grid;gap:3px;min-width:0}.dashboard-pulse b{overflow:hidden;color:var(--ink);font-size:12px;font-weight:800;text-overflow:ellipsis;white-space:nowrap;font-variant-numeric:tabular-nums}
+.recent-pages-panel{margin:0 0 13px;padding:13px 14px;border:1px solid var(--theme-line);border-radius:13px;background:var(--paper)}
+.recent-pages-heading{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-bottom:9px}.recent-pages-heading h2{color:var(--ink);font:750 15px Manrope,'DM Sans',sans-serif}.recent-pages-heading>span{color:var(--muted);font-size:9px}
+.recent-pages-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:7px}
+.recent-page-link{display:flex;align-items:center;gap:7px;min-width:0;min-height:38px;padding:7px 9px;border:1px solid var(--theme-line);border-radius:9px;background:color-mix(in srgb,var(--theme-soft) 38%,var(--paper));color:var(--ink);font-size:10px;font-weight:700;text-align:left}
+.recent-page-link:hover{border-color:var(--accent);background:var(--theme-soft)}.recent-page-icon{display:grid;place-items:center;flex:none;color:var(--accent)}.recent-page-icon svg{width:15px;height:15px}.recent-page-link>span:nth-child(2){min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}.recent-page-arrow{margin-left:auto;color:var(--accent)}
+.recent-pages-empty{padding:10px 2px;color:var(--muted);font-size:11px}
+.overview-transactions{margin-top:0}
+
+/* Reuse the invoice's compact, theme-aware payment toggle in expenses. */
+.expense-payment-picker{grid-column:auto;min-width:0;margin:0;padding:0;border:0}
+.expense-payment-picker legend{margin-bottom:7px;color:var(--ink);font-size:12px;font-weight:700}
+.expense-payment-picker .payment-method-options{width:max-content;max-width:100%}
+.expense-payment-picker input[type=hidden]{display:none}
+
+@media(max-width:620px){
+ .daily-dashboard{padding:11px}
+ .daily-total-grid{gap:5px}.daily-total-grid article{padding:8px 7px}.daily-total-grid small{font-size:8px}.daily-total-grid b{font-size:12px}
+ .daily-category-grid{grid-template-columns:1fr;gap:6px}.daily-category-card{padding:8px 10px}.daily-category-title{margin-bottom:6px}.daily-category-values{grid-template-columns:1fr 1fr}
+ .dashboard-pulse{gap:5px}.dashboard-pulse article{align-items:flex-start;flex-direction:column;gap:5px;padding:8px}.dashboard-pulse small{font-size:8px}.dashboard-pulse b{font-size:11px}
+ .recent-pages-list{grid-template-columns:1fr}.recent-page-link{min-height:34px}
+ .page-heading h1,.welcome h1{font-size:clamp(28px,7vw,34px)!important}
+ .topbar-brand b{font-size:clamp(18px,4.4vw,23px)!important}
+}
+
+/* Compact payment-method segmented buttons. */
+.payment-method-picker{min-width:0;margin:0 0 12px;padding:0;border:0}
+.payment-method-picker legend{margin-bottom:6px;color:var(--muted);font-size:12px;font-weight:700}
+.payment-method-options{display:inline-flex;gap:4px;padding:3px;border:1px solid var(--theme-line);border-radius:999px;background:var(--theme-soft)}
+.payment-method-options button{min-height:32px;padding:5px 13px;border:0;border-radius:999px;background:transparent;color:var(--muted);font:700 12px 'DM Sans',sans-serif;transition:background .16s,color .16s,box-shadow .16s}
+.payment-method-options button[aria-pressed="true"]{background:var(--accent);color:#fff;box-shadow:0 2px 7px color-mix(in srgb,var(--accent) 25%,transparent)}
+.payment-method-options button:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+.bill-payment-column>label:first-child{font-size:12px!important}
+.bill-payment-column>label:first-child input{min-height:38px}
+
+/* Minimal, single-line page titles and a clear store identity in the top bar. */
+.page-title-eyebrow{display:block;margin:0!important;color:var(--accent)!important;font-size:clamp(21px,2.4vw,25px)!important;font-weight:800!important;letter-spacing:-.035em!important;line-height:1.2}
+.welcome h1,.page-heading h1{font-size:22px!important;line-height:1.2}
+.topbar-brand b{font-size:clamp(20px,4.5vw,26px)!important;font-weight:800!important;letter-spacing:-.04em!important;line-height:1.12!important;color:var(--ink)!important}
+.topbar-brand small{font-size:12px!important}
+
+/* Fit donut totals inside the hole and keep each legend item on one line. */
+.donut-center b{max-width:80%;font-size:clamp(9px,1.05vw,13px);letter-spacing:-.06em;font-variant-numeric:tabular-nums;text-align:center}
+.donut-center small{display:none!important}
+.donut-legend{gap:8px}
+.donut-legend>div.donut-legend-row{display:grid;grid-template-columns:9px minmax(0,1fr);align-items:center;gap:7px;min-width:0;font-size:11px}
+.donut-legend-row>span{display:flex;align-items:baseline;gap:5px;min-width:0;white-space:nowrap;overflow:hidden}
+.donut-legend-row .donut-name{flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.donut-legend-row b{flex:none;color:var(--ink);font-size:11px;font-variant-numeric:tabular-nums}
+.donut-legend-row .donut-percent{flex:none;margin:0;color:var(--accent);font-size:10px;font-weight:700}
+
+/* Keep the construction ledger only as wide as its content; wrapper remains swipeable. */
+.house-ledger-table{width:max-content!important;min-width:0!important;max-width:none;table-layout:auto}
+.house-ledger-table th,.house-ledger-table td{padding:10px 11px;white-space:nowrap}
+.house-ledger-table th:nth-child(3){min-width:0!important}
+.house-ledger-table td:nth-child(3){min-width:0!important;max-width:360px;overflow:hidden;text-overflow:ellipsis}
+.house-ledger-table th:last-child,.house-ledger-table td:last-child{padding-right:12px}
+
+@media(max-width:780px){
+ .sidebar{background:var(--theme-sidebar)!important}
+ .sidebar .nav-item{font-size:12px!important}
+ .sidebar .nav-item.active{font-size:12px!important}
+ .topbar-brand b{font-size:clamp(19px,4.6vw,24px)!important}
+ .donut-center b{font-size:10px}
+ .donut-legend>div.donut-legend-row{font-size:10px}
+ .donut-legend-row b{font-size:10px}.donut-legend-row .donut-percent{font-size:9px}
+}
+@media(max-width:560px){
+ .page-title-eyebrow{font-size:22px!important}
+ .payment-method-options button{min-height:30px;padding:4px 12px;font-size:11px}
+ .donut-layout{grid-template-columns:minmax(105px,130px) minmax(0,1fr);gap:9px}
+ .house-ledger-table{min-width:max-content!important}
+}
